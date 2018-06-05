@@ -1,9 +1,16 @@
+# -*- coding: utf-8 -*-
+"""
+@FileName: model_test.py
+@author: Meihua Peng
+@time:  $(2018.5.30)  $(10:00)
+"""
+
 import numpy as np
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 import tensorflow as tf
 import pandas as pd
-tf.cond = tf 
+# tf.cond = tf 
 import keras
 from keras import optimizers, backend
 from keras.models import Sequential
@@ -37,9 +44,9 @@ if __name__ == '__main__':
     model.add(pooling.MaxPooling2D(pool_size=(2, 2)))
     model.add(Flatten())
     model.add(Dense(500, activation='relu'))
-    #model.add(Dropout(0.5))
+    model.add(Dropout(0.5))
     model.add(Dense(100, activation='relu'))
-    #model.add(Dropout(0.25))
+    model.add(Dropout(0.25))
     model.add(Dense(20, activation='relu'))
     model.add(Dense(1))
     model.compile(optimizer=optimizers.Adam(lr=1e-04), loss='mean_squared_error')
