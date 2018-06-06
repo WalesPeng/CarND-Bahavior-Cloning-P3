@@ -16,17 +16,13 @@ The goal of this project was to train a end-to-end deep learning model that woul
 
 ## Data collection and balancing
 
-The provided driving simulator had two different tracks. I used first of them for collecting training data.
+The provided driving simulator had two different tracks. I used first of them in this project.
 
 The driving simulator would save frames from three front-facing "cameras", recording data from the car's point of view; as well as various driving statistics like throttle, speed and steering angle. I am going to use camera data as model input and expect it to predict the steering angle in the `[-1, 1]` range.
 
 I have collected a dataset containing approximately **8 minutes worth of driving data** around track 1. This would contain both driving in _"smooth"_ mode (staying right in the middle of the road for the whole lap), and _"recovery"_ mode (letting the car drive off center and then interfering to steer it back in the middle). 
 
-Just as one would expect, resulting dataset was extremely unbalanced and had a lot of examples with steering angles close to `0`. So I applied a designated random sampling which ensured that the data is as balanced across steering angles as possible. This process included splitting steering angles. 
-
-
-
-Please, mind that I balanced dataset across _absolute_ values, as by applying horizontal flip during augmentation I end up using both positive and negative steering angles for each frame.
+I balanced dataset across _absolute_ values, as by applying horizontal flip during augmentation I end up using both positive and negative steering angles for each frame.
 
 ## Data augmentation and preprocessing
 
